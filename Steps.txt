@@ -1,0 +1,17 @@
+create table olympics(
+     athlete_name string, age int, country string, year int, closing_date string, sport string, gold int, silver int, bronze int, total int)
+     row format delimited fields terminated by '\t';
+
+load data local inpath '/home/acadgild/hive/olympix_data.csv' into table olympics;
+
+1)
+select country,sport,sum(total) from olympics group by country,sport having sport = "Swimming";
+
+2)
+select year,sum(total) from olympics where country='India' group by year;
+
+3)
+select country, sum(total) from olympics group by country;
+
+4)
+select country, sum(gold) from olympics group by country;
